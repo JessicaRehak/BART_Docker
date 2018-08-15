@@ -40,6 +40,8 @@ RUN wget http://github.com/google/googletest/archive/release-1.8.0.tar.gz && \
     cd googlemock && cp *.a /usr/local/lib && \
     cd gtest && cp *.a /usr/local/lib
 
+RUN apt-get install -y lcov
+
 # ENV variables
 
 ENV CC=/usr/bin/mpicc
