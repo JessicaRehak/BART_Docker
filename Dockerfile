@@ -8,15 +8,7 @@ RUN apt-get update
 
 # Prereqs
 RUN apt-get update && \
-    apt-get install -y wget libopenmpi-dev openmpi-bin
-
-# Updated CMake
-RUN wget https://cmake.org/files/v3.10/cmake-3.10.3.tar.gz && \
-    tar -xvf cmake-3.10.3.tar.gz && \
-    cd cmake-3.10.3 && \
-    ./bootstrap && \
-    make -j4 && \
-    make install
+    apt-get install -y wget
 
 # Protocol Buffers
 
@@ -29,6 +21,8 @@ RUN wget http://github.com/google/protobuf/releases/download/v3.6.0/protobuf-cpp
     make install && \
     ldconfig
 
+RUN ln -s $(spack location --install-dir cmake)/bin/cmake /usr/local/bin/cmake
+
 # GTest and GMock
 RUN wget http://github.com/google/googletest/archive/release-1.8.0.tar.gz && \
     tar -xvf release-1.8.0.tar.gz && \
@@ -40,10 +34,17 @@ RUN wget http://github.com/google/googletest/archive/release-1.8.0.tar.gz && \
     cd googlemock && cp *.a /usr/local/lib && \
     cd gtest && cp *.a /usr/local/lib
 
-RUN apt-get install -y lcov
+RUN apt-get install -y lcov && \
+    apt-get install -y ssh
 
 # ENV variables
 
-ENV CC=/usr/bin/mpicc
-ENV CXX=/usr/bin/mpicxx
-ENV DEAL_II_DIR=/usr/local/opt/spack/linux-ubuntu16.04-x86_64/gcc-5.4.0/dealii-9.0.0-jdia334y7mn2fbccw7rfor5zf33e7jw6/
+RUN ln -s $(spack location --install-dir openmpi)/bin/mpicc /usr/local/bin/mpicc
+RUN ln -s $(spack location --install-dir openmpi)/bin/mpicxx /usr/local/bin/mpicxx
+RUN ln -s $(spack location --install-dir openmpi)/bin/mpirun /usr/local/bin/mpirun
+RUN ln -s $(spack location --install-dir dealii) ~/dealii.9
+
+ENV CC mpicc
+ENV CXX mpicxx
+ENV DEAL_II_DIR ~/dealii.9
+
