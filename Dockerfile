@@ -37,6 +37,15 @@ RUN wget http://github.com/google/googletest/archive/release-1.8.0.tar.gz && \
 RUN apt-get install -y lcov && \
     apt-get install -y ssh
 
+# GCC-8
+
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test && \
+    apt-get update && \
+    apt-get install -y gcc-8 g++-8 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 1 --slave /usr/bin/g++ g++ /usr/bin/g++-8  
+
 # ENV variables
 
 RUN ln -s $(spack location --install-dir openmpi)/bin/mpicc /usr/local/bin/mpicc
@@ -47,4 +56,5 @@ RUN ln -s $(spack location --install-dir dealii) ~/dealii.9
 ENV CC mpicc
 ENV CXX mpicxx
 ENV DEAL_II_DIR ~/dealii.9
+
 
