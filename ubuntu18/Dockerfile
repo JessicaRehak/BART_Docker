@@ -89,5 +89,5 @@ RUN git clone https://github.com/dealii/candi && \
 	--platform=./deal.II-toolchain/platforms/supported/ubuntu18.platform && \
     rm -rf $HOME/candi $HOME/dealii/tmp	       
 
-
+ENV DEAL_II_DIR $HOME/dealii/deal.II-v9.0.1
 
