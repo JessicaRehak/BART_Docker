@@ -91,3 +91,5 @@ RUN git clone https://github.com/dealii/candi && \
 
 ENV DEAL_II_DIR $HOME/dealii/deal.II-v9.0.1
 
+RUN sudo apt-get install -y lcov
+
