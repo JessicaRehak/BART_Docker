@@ -78,7 +78,8 @@ RUN wget http://github.com/google/protobuf/releases/download/v3.6.0/protobuf-cpp
 RUN sudo apt-get install -y \
     libp4est-dev \
     petsc-dev \
-    slepc-dev
+    slepc-dev \
+    libmetis-dev
 
 # Install dealii
 RUN git clone https://github.com/dealii/candi && \
@@ -91,5 +92,6 @@ RUN git clone https://github.com/dealii/candi && \
 
 ENV DEAL_II_DIR $HOME/dealii/deal.II-v9.0.1
 
-RUN sudo apt-get install -y lcov
+RUN sudo apt-get update && \
+    sudo apt-get install -y lcov
 
