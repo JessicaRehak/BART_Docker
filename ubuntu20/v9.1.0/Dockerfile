@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 MAINTAINER jsrehak@berkeley.edu
 
@@ -52,17 +52,17 @@ RUN sudo apt-get install -y \
     slepc-dev \
     libmetis-dev
 
-# Install dealii-v.9.0.1
-RUN wget http://github.com/koecher/candi/archive/v9.0.1.tar.gz && \
-    tar -xvf v9.0.1.tar.gz
-RUN cd $HOME/candi-9.0.1 && \
+# Install dealii-v.9.1.0
+RUN wget https://github.com/dealii/candi/archive/v9.1.1-r2.tar.gz && \
+    tar -xvf v9.1.1-r2.tar.gz
+RUN cd $HOME/candi-9.1.1 && \
     ./candi.sh -j4 \
     	--packages="load:dealii-prepare once:dealii" \
         --prefix=$HOME/dealii \
 	--platform=./deal.II-toolchain/platforms/supported/ubuntu18.platform
-RUN rm -rf $HOME/candi-9.0.1 $HOME/dealii/tmp	       
+RUN rm -rf $HOME/candi-9.1.1 $HOME/dealii/tmp	       
 
-ENV DEAL_II_DIR $HOME/dealii/deal.II-v9.0.1
+ENV DEAL_II_DIR $HOME/dealii/deal.II-v9.1.1
 
 # GTest and GMock
 RUN wget http://github.com/google/googletest/archive/release-1.10.0.tar.gz && \
