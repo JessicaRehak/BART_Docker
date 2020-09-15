@@ -11,11 +11,12 @@ dependencies. BART is designed to work with specific versions of
 deal.II, but should work with any versions of the other
 dependencies. 
 
-|BART Branch | Docker Tag           | Ubuntu   | Deal II | GoogleTest | ProtocolBuffers |
-|------------|----------------------|----------|---------|------------|-----------------|
-| `dev`      | `v9.1.1`             | 20.04    | 9.1.1   | 1.10.0     | 3.11.2          |
-| `master`   | `v9.0.1-1`, `latest` | 18.04    | 9.0.1   | 1.10.0     | 3.11.2          |
-|            | `v9.0.1`             | 18.04    | 9.0.1   | 1.8.0      | 3.6.0           |
+|BART Branch | Docker Tag           | Ubuntu   | Deal II | GoogleTest | ProtocolBuffers |FFTW   |
+|------------|----------------------|----------|---------|------------|-----------------|-------|
+| `dev`      | `v9.1.1-1`           | 20.04    | 9.1.1   | 1.10.0     | 3.11.2          | 3.8.8 |
+| `master`   | `v9.1.1`, `latest`   | 20.04    | 9.1.1   | 1.10.0     | 3.11.2          |       |
+|            | `v9.0.1-1`           | 18.04    | 9.0.1   | 1.10.0     | 3.11.2          |       |
+|            | `v9.0.1`             | 18.04    | 9.0.1   | 1.8.0      | 3.6.0           |       |
 
 Links:
 
