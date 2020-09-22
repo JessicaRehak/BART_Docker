@@ -59,8 +59,7 @@ RUN git clone --single-branch --branch dealii-9.2 https://github.com/dealii/cand
 RUN cd $HOME/candi && \
     ./candi.sh -j4 \
     	--packages="load:dealii-prepare once:dealii" \
-        --prefix=$HOME/dealii \
-	--platform=./deal.II-toolchain/platforms/supported/ubuntu18.platform
+        --prefix=$HOME/dealii
 RUN rm -rf $HOME/candi $HOME/dealii/tmp	       
 
 ENV DEAL_II_DIR $HOME/dealii/deal.II-v9.2.0
@@ -80,18 +79,18 @@ RUN wget http://github.com/google/googletest/archive/release-1.10.0.tar.gz && \
     rm release-1.10.0.tar.gz && \
     rm -rf googletest-release-1.10.0
 
-# # Protocol Buffers
-RUN wget http://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-cpp-3.11.2.tar.gz && \
-    tar -xvf protobuf-cpp-3.11.2.tar.gz && \
-    cd protobuf-3.11.2 && \
+# Protocol Buffers
+RUN wget http://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protobuf-cpp-3.13.0.tar.gz && \
+    tar -xvf protobuf-cpp-3.13.0.tar.gz && \
+    cd protobuf-3.13.0 && \
     ./configure && \
     make && \
     make check && \
     sudo make install && \
     sudo ldconfig && \
     cd ~ && \
-    rm protobuf-cpp-3.11.2.tar.gz && \
-    rm -rf protobuf-3.11.2
+    rm protobuf-cpp-3.13.0.tar.gz && \
+    rm -rf protobuf-3.13.0
 
 # FFTW
 RUN wget http://www.fftw.org/fftw-3.3.8.tar.gz && \
