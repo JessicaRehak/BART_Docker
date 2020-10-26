@@ -103,4 +103,26 @@ RUN wget http://www.fftw.org/fftw-3.3.8.tar.gz && \
     cd ~ && \
     rm fftw-3.3.8.tar.gz && \
     rm -rf fftw-3.3.8
-    
+
+# FMT Library
+RUN wget https://github.com/fmtlib/fmt/archive/7.1.0.tar.gz && \
+    tar -xvf 7.1.0.tar.gz && \
+    cd fmt-7.1.0 && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    sudo make install && \
+    cd ~ && \
+    rm 7.1.0.tar.gz && \
+    rm -rf fmt-7.1.0
+
+# DocOpt
+RUN wget https://github.com/docopt/docopt.cpp/archive/v0.6.3.tar.gz && \
+    tar -xvf v0.6.3.tar.gz && \
+    cd docopt.cpp-0.6.3 && \
+    cmake . && \
+    sudo make install && \
+    cd ~ && \
+    rm v0.6.3.tar.gz && \
+    rm -rf docopt.cpp-0.6.3
