@@ -126,3 +126,8 @@ RUN wget https://github.com/docopt/docopt.cpp/archive/v0.6.3.tar.gz && \
     cd ~ && \
     rm v0.6.3.tar.gz && \
     rm -rf docopt.cpp-0.6.3
+
+# gcc/g++ 10
+RUN sudo apt-get install -y g++-10 gcc-10 gfortran-10
+RUN sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 90 && \
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 90
